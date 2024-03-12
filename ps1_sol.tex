@@ -79,7 +79,16 @@ $$
 
 \ifsolution \solution{}
 %%% PROBLEM 1(a) SOLUTION START %%%
-1, 2, 3, 4
+$f_1(n),f_2(n),f_4(n),f_3(n)$
+\\
+\\
+For $f_1(n)= n^{0.999999} \log n$, since $\log n =O(n^c)$, we can treat constant c as 0.000001,
+therefore $f_1(n)= n^{0.999999} \log n = n^{0.999999} \times n^{0.000001} = n = O(n)$.\\
+$f_2(n) = 10000000 n=O(n)$.\\
+$f_3(n) = 1.000001^n =O(2^n)$\\
+$f_4(n) = n^2 = O(n^2)$\\
+Consequently, the increasing order of asymptotic complexity is $f_1(n),f_2(n),f_4(n),f_3(n)$.
+
 %%% PROBLEM 1(a) SOLUTION END %%%
 \fi
 
@@ -96,7 +105,15 @@ $$
 
 \ifsolution \solution{}
 %%% PROBLEM 1(b) SOLUTION START %%%
-1, 2, 3, 4
+$f_1(n),f_4(n),f_3(n),f_2(n)$
+\\
+\\
+$f_1(n) = 2^{2^{1000000}} = O(1)$\\
+$f_2(n) = 2^{100000n} = O(c2^{n}) = O(2^n)$\\
+$f_3(n) = \displaystyle \binom{n}{2} = \frac{n!}{2!\times(n-2)!} = \frac{n(n-1)}{2} = O(n^2)$\\
+$f_4(n) = n \sqrt{n} = O(n^{\frac{3}{2}})$
+
+Therefore, the increasing order of asymptotic complexity is $f_1(n),f_4(n),f_3(n),f_2(n)$.
 %%% PROBLEM 1(b) SOLUTION END %%%
 \fi
 
@@ -113,7 +130,18 @@ $$
 
 \ifsolution \solution{}
 %%% PROBLEM 1(c) SOLUTION START %%%
-1, 2, 3, 4
+$f_4(n),f_2(n),f_3(n),f_1(n)$
+\\
+\\
+$f_1(n) = n^{\sqrt{n}}=(2^{\log_2{n}})^{\sqrt{n}}=O(2^{\sqrt{n}\log_2{n}})$\\
+$f_2(n) = 2^n = O(2^n)$\\
+$f_3(n) = n^{10} \cdot 2^{n / 2} = O(n^{10}\cdot 2^{n})=2^{10\log_2{n}}\cdot2^{2/n}=O(2^{n/2+\log_2{n}})$\\
+$f_4(n) = \displaystyle\sum_{i = 1}^{n} (i + 1) = \frac{(2+(n+1))n}{2}
+(\text{summantion of arithmetic sequence}) = O(n^2)$
+
+Due to the equation $(2)^{cg(x)}=(2^c)^g(x)$, where $c$ is a constant and $g(x)$ is a function of $x$,
+ which signifies that$f_3(n) = O(\sqrt{2}^{n+2\log_2{n}})$ so $f_3(n)=O(f_2(n))$ but $f_2(n)\neq O(f_3(n))$
+Therefore, the increasing order of asymptotic complexity is $f_4(n),f_1(n),f_3(n),f_2(n)$.
 %%% PROBLEM 1(c) SOLUTION END %%%
 \fi
 
