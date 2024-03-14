@@ -96,7 +96,8 @@ def algorithm3(problem, bestSeen = None, trace = None):
         bestSeen = neighbor
         if not trace is None: trace.setBestSeen(bestSeen)
 
-    # return if we can't see any better neighbors
+    # return if we can't see any better neighbors 
+    # (Add by myself)This line makes the algorithm wrong, you need to consider the maximum
     if neighbor == crossLoc:
         if not trace is None: trace.foundPeak(crossLoc)
         return crossLoc
@@ -107,6 +108,57 @@ def algorithm3(problem, bestSeen = None, trace = None):
     newBest = sub.getLocationInSelf(problem, bestSeen)
     if not trace is None: trace.setProblemDimensions(sub)
     result = algorithm3(sub, newBest, trace)
+    return problem.getLocationInSelf(sub, result)
+
+def algorithm3_Revised(problem, bestSeen = None, trace = None):
+    # if it's empty, we're done 
+    if problem.numRow <= 0 or problem.numCol <= 0:
+        return None
+
+    midRow = problem.numRow // 2
+    midCol = problem.numCol // 2
+
+    # first, get the list of all subproblems
+    subproblems = []
+
+    (subStartR1, subNumR1) = (0, midRow)
+    (subStartR2, subNumR2) = (midRow + 1, problem.numRow - (midRow + 1))
+    (subStartC1, subNumC1) = (0, midCol)
+    (subStartC2, subNumC2) = (midCol + 1, problem.numCol - (midCol + 1))
+
+    subproblems.append((subStartR1, subStartC1, subNumR1, subNumC1))
+    subproblems.append((subStartR1, subStartC2, subNumR1, subNumC2))
+    subproblems.append((subStartR2, subStartC1, subNumR2, subNumC1))
+    subproblems.append((subStartR2, subStartC2, subNumR2, subNumC2))
+
+    # find the best location on the cross (the middle row combined with the
+    # middle column)
+    cross = []
+
+    cross.extend(crossProduct([midRow], range(problem.numCol)))
+    cross.extend(crossProduct(range(problem.numRow), [midCol]))
+
+    crossLoc = problem.getMaximum(cross, trace)
+    neighbor = problem.getBetterNeighbor(crossLoc, trace)
+
+
+    # return if we can't see any better neighbors
+    if neighbor == bestSeen:
+        if not trace is None: trace.foundPeak(crossLoc)
+        return crossLoc
+    
+    # update the best we've seen so far based on this new maximum
+    if bestSeen is None or problem.get(neighbor) > problem.get(bestSeen):
+        bestSeen = neighbor
+        if not trace is None: trace.setBestSeen(bestSeen)
+
+
+    # figure out which subproblem contains the largest number we've seen so
+    # far, and recurse
+    sub = problem.getSubproblemContaining(subproblems, bestSeen)
+    newBest = sub.getLocationInSelf(problem, bestSeen)
+    if not trace is None: trace.setProblemDimensions(sub)
+    result = algorithm3_Revised(sub, newBest, trace)
     return problem.getLocationInSelf(sub, result)
 
 def algorithm4(problem, bestSeen = None, rowSplit = True, trace = None):

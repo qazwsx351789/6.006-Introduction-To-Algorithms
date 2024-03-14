@@ -4,6 +4,7 @@
 \documentclass[12pt,twoside]{article}
 
 \usepackage{amsmath}
+\usepackage{color}
 
 \input{macros}
 
@@ -54,7 +55,7 @@ your critique of the solutions.
 
 \textbf{Collaborators:}
 %%% COLLABORATORS START %%%
-None.
+By myself
 %%% COLLABORATORS END %%%
 
 \begin{problems}
@@ -79,7 +80,16 @@ $$
 
 \ifsolution \solution{}
 %%% PROBLEM 1(a) SOLUTION START %%%
-1, 2, 3, 4
+$f_1(n),f_2(n),f_4(n),f_3(n)$
+\\
+\\
+For $f_1(n)= n^{0.999999} \log n$, since $\log n =O(n^c)$, we can treat constant c as 0.000001,
+therefore $f_1(n)= n^{0.999999} \log n = n^{0.999999} \times n^{0.000001} = n = O(n)$.\\
+$f_2(n) = 10000000 n=O(n)$.\\
+$f_3(n) = 1.000001^n =O(2^n)$\\
+$f_4(n) = n^2 = O(n^2)$\\
+Consequently, the increasing order of asymptotic complexity is $f_1(n),f_2(n),f_4(n),f_3(n)$.
+\\
 %%% PROBLEM 1(a) SOLUTION END %%%
 \fi
 
@@ -96,7 +106,16 @@ $$
 
 \ifsolution \solution{}
 %%% PROBLEM 1(b) SOLUTION START %%%
-1, 2, 3, 4
+$f_1(n),f_4(n),f_3(n),f_2(n)$
+\\
+\\
+$f_1(n) = 2^{2^{1000000}} = O(1)$\\
+$f_2(n) = 2^{100000n} = O(c2^{n}) = O(2^n)$\\
+$f_3(n) = \displaystyle \binom{n}{2} = \frac{n!}{2!\times(n-2)!} = \frac{n(n-1)}{2} = O(n^2)$\\
+$f_4(n) = n \sqrt{n} = O(n^{\frac{3}{2}})$
+
+Therefore, the increasing order of asymptotic complexity is $f_1(n),f_4(n),f_3(n),f_2(n)$.
+\\
 %%% PROBLEM 1(b) SOLUTION END %%%
 \fi
 
@@ -113,7 +132,19 @@ $$
 
 \ifsolution \solution{}
 %%% PROBLEM 1(c) SOLUTION START %%%
-1, 2, 3, 4
+$f_4(n),f_1(n),f_3(n),f_2(n)$
+\\
+\\
+$f_1(n) = n^{\sqrt{n}}=(2^{\log_2{n}})^{\sqrt{n}}=O(2^{\sqrt{n}\log_2{n}})$\\
+$f_2(n) = 2^n = O(2^n)$\\
+$f_3(n) = n^{10} \cdot 2^{n / 2} = O(n^{10}\cdot 2^{n})=2^{10\log_2{n}}\cdot2^{2/n}=O(2^{n/2+\log_2{n}})$\\
+$f_4(n) = \displaystyle\sum_{i = 1}^{n} (i + 1) = \frac{(2+(n+1))n}{2}
+(\text{summantion of arithmetic sequence}) = O(n^2)$
+
+{\color{red}Due to the equation $(2)^{cg(x)}=(2^c)^g(x)$, where $c$ is a constant and $g(x)$ is a function of $x$,
+ which signifies that$f_3(n) = O(\sqrt{2}^{n+2\log_2{n}})$ so $f_3(n)=O(f_2(n))$ but $f_2(n)\neq O(f_3(n))$(special trick)}
+Therefore, the increasing order of asymptotic complexity is $f_4(n),f_1(n),f_3(n),f_2(n)$.
+\\
 %%% PROBLEM 1(c) SOLUTION END %%%
 \fi
 
@@ -149,7 +180,13 @@ $$
 
 \ifsolution \solution{}
 %%% PROBLEM 2(a) SOLUTION START %%%
-1
+2
+\\
+\\
+$T(n,n)=\Theta(n+n)+T(n/2,n/2)=\Theta(2n)+\Theta(n)+\Theta(n/2)+\ldots
++\Theta(1)\\
+(\text{sum of geometric sequence})=2n(1-0.5^n)/0.5=4n-n\cdot 2^{(2-n)}=\Theta(n)$
+\\
 %%% PROBLEM 2(a) SOLUTION END %%%
 \fi
 
@@ -176,7 +213,11 @@ $$
 
 \ifsolution \solution{}
 %%% PROBLEM 2(b) SOLUTION START %%%
-1
+3
+\\
+\\
+$T(n,n)=\Theta(n)+T(n,n/2)=\Theta(n)+\Theta(n)+\ldots+\Theta(n)$ ({with $\log (n)$ occurrences of} $\Theta(n)$ in the sum.)$=\log n \cdot\Theta(n)=\Theta(n\log n)$
+\\
 %%% PROBLEM 2(b) SOLUTION END %%%
 \fi
 
@@ -204,7 +245,11 @@ $$
 
 \ifsolution \solution{}
 %%% PROBLEM 2(c) SOLUTION START %%%
-1
+2
+\\
+\\
+$T(n,n)= \Theta(n)+S(n,n/2)=\Theta(n)+\Theta(n)+T(n/2,n/2)$, it is similar to the problem (a). From the experience of problem (a). $T(n,n) = \Theta(n)+\Theta(n)+T(n/2,n/2) = \Theta(n)$.
+\\
 %%% PROBLEM 2(c) SOLUTION END %%%
 \fi
 
