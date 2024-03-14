@@ -4,6 +4,11 @@ except ps1_sol.tex and some revised codes for the requirements in homework and q
 I took the course 6.006 online and did all the homework and quizzes by myself as 
 a practice. This course is instrumental for me to self-learn algorithms.
 
+If you are curious about what I did, you can see ps1_sol.tex directly. I wrote down all what I did in the file.
+
+Briefly, I did problem set 1 here and figured out which algorithms for peak-finding problem would make mistake.
+
+Furthermore, I fix the defective algorithm as algorithm5.
 ********************************************************************************
 ***************************** FORMATTING INSTRUCTIONS **************************
 ********************************************************************************
