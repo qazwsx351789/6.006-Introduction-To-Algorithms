@@ -30,7 +30,9 @@ def main():
     algorithmList = [("Algorithm 1", algorithms.algorithm1),
                      ("Algorithm 2", algorithms.algorithm2),
                      ("Algorithm 3", algorithms.algorithm3),
-                     ("Algorithm 4", algorithms.algorithm4)]
+                     ("Algorithm 4", algorithms.algorithm4),
+                     ("Algorithm 5 Revised P3", algorithms.algorithm3_Revised)
+                     ]
 
     steps = []
     
