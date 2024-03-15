@@ -287,7 +287,7 @@ and which are efficient.
 
 \ifsolution \solution{}
 %%% PROBLEM 3(a) SOLUTION START %%%
-1
+Yes.
 %%% PROBLEM 3(a) SOLUTION END %%%
 \fi
 
@@ -299,7 +299,7 @@ and which are efficient.
 
 \ifsolution \solution{}
 %%% PROBLEM 3(b) SOLUTION START %%%
-1
+Yes.
 %%% PROBLEM 3(b) SOLUTION END %%%
 \fi
 
@@ -311,7 +311,7 @@ and which are efficient.
 
 \ifsolution \solution{}
 %%% PROBLEM 3(c) SOLUTION START %%%
-1
+No.
 %%% PROBLEM 3(c) SOLUTION END %%%
 \fi
 
@@ -323,7 +323,7 @@ and which are efficient.
 
 \ifsolution \solution{}
 %%% PROBLEM 3(d) SOLUTION START %%%
-1
+Yes.
 %%% PROBLEM 3(d) SOLUTION END %%%
 \fi
 
@@ -345,7 +345,15 @@ and which are efficient.
 
 \ifsolution \solution{}
 %%% PROBLEM 4(a) SOLUTION START %%%
-1
+$\Theta(n \log n)$
+\\
+\\
+In algorithm1, the first step is to find the maximum in the middle colume of the problem with $n\times n$ elements , 
+which would take $\Theta(n)$. Second, determine whether the neighbors of the maximum is larger than maximum. If so, 
+divide problom into subproblem with dimension $n\times2/n$ and repeat the first step until you find a peak.
+\\
+Consequently, the run time of algorithm1 can be written as $T(n, n) = \Theta(n) + T(n,n/2) = \Theta(n\log n)$, 
+which we have discussed in Problem 1-2 (b). Therefore the worst-case runtime of algorithm1 is $\Theta(n\log n)$.
 %%% PROBLEM 4(a) SOLUTION END %%%
 \fi
 
@@ -361,7 +369,13 @@ and which are efficient.
 
 \ifsolution \solution{}
 %%% PROBLEM 4(b) SOLUTION START %%%
-1
+$\Theta(n^2)$
+\\
+\\
+For algorithm2, it utilizes greedy strategy to approach a peak  step by step. Each step costs $\Theta(1)$ runtime.
+The worst-case need to check all the elements in the problem. Therefore the worst-case runtime of algorithm1 is 
+$\Theta(n^2)$.
+\\
 %%% PROBLEM 4(b) SOLUTION END %%%
 \fi
 
@@ -377,7 +391,17 @@ and which are efficient.
 
 \ifsolution \solution{}
 %%% PROBLEM 4(c) SOLUTION START %%%
-1
+$Theta(n)$
+\\
+\\
+In algorithm3, the first step is to find the maximum in the middle colume and row of the problem with $n\times n$ elements,
+which would take $\Theta(2n)$. Second, determine whether the neighbors of the maximum is larger than maximum. If so, 
+divide problom into subproblem with dimension $2/n\times2/n$ and repeat the first step until you find a peak.
+\\
+This algorithm is not correct in this problem. However, the worst-case runtime can be presanted as $T(n,n) = \Theta(2n) +
+T(2/n,2/n)$, which we have discussed in Problem 1-2 (a). The worst-case runtime of algorithm3 is $\Theta(n)$.
+\\
+
 %%% PROBLEM 4(c) SOLUTION END %%%
 \fi
 
@@ -393,7 +417,18 @@ and which are efficient.
 
 \ifsolution \solution{}
 %%% PROBLEM 4(d) SOLUTION START %%%
-1
+$\Theta(n)$
+\\
+\\
+In algorithm1, the first step is to find the maximum in the middle colume of the problem with $n\times n$ elements , 
+which would take $\Theta(n)$. Second, determine whether the neighbors of the maximum is larger than maximum. If so, 
+divide problom into subproblem with dimension $n\times2/n$. Back to first step and, however, find the maximum in the 
+middle row of the subproblem then determine whether the neighbors of the maximum is larger than maximum. Do the above 
+instructions recursively until we find a peak.
+\\
+Consequently, the run time of algorithm1 can be written as $T(n, n) = \Theta(n) + S(n,n/2)$, and $S(n, n) = \Theta(n) + T(n/2,n)$,
+ which we have discussed in Problem 1-2 (c). Therefore the worst-case runtime of algorithm4 $T(n,n)$ is $\Theta(n)$.
+\\
 %%% PROBLEM 4(d) SOLUTION END %%%
 \fi
 
@@ -502,21 +537,33 @@ that is not a peak).
 \ifsolution \solution{}
 %%% PROBLEM 6 SOLUTION START %%%
 \begin{verbatim}
+
+Counterexamples for algorithm3
+
 problemMatrix = [
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0]
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 3, 0, 0, 0, 1, 0],
+    [0, 2, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 6, 5, 0, 0, 0]
 ]
 
 problemMatrix = [
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0]
+	[ 4,  5,  6,  7,  8,  7,  6,  5,  4,  3,  2],
+	[ 5,  6,  7,  8,  9,  8,  7,  6,  5,  4,  3],
+	[ 6,  7,  8,  9, 10, 11,  8,  7,  6,  5,  4],
+	[ 7,  8,  9, 10,  9, 10,  9,  8,  7,  6,  5],
+	[ 8,  9, 10, 11, 13, 11, 10,  9,  8,  7,  6],
+	[ 7,  8,  9, 10, 12, 10,  9,  8,  7,  6,  5],
+	[ 6,  7,  8,  9, 10,  9,  8,  7,  6,  5,  4],
+	[ 5,  6,  7,  8,  9,  8,  7,  6,  5,  4,  3],
+	[ 4,  5,  6,  7,  8,  7,  6,  5,  4,  3,  2],
+	[ 3,  4,  5,  6,  7,  6,  5,  4,  3,  2,  1],
+	[ 2,  3,  4,  5,  6,  5,  4,  3,  2,  1,  0]
 ]
+
 \end{verbatim}
 %%% PROBLEM 6 SOLUTION END %%%
 \fi
