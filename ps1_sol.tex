@@ -523,7 +523,17 @@ Hence, we have a contradiction.
 
 \ifsolution \solution{}
 %%% PROBLEM 5 SOLUTION START %%%
-Write your proof here.
+\\
+For algorithm3,  it goes wrong because in the algorithm, it will return 
+the result if it finds a maximum in the middle colume and row in the subproblem,
+and check the neighbors to ensure they are all smaller than the maximum in the 
+subproblem. This instruction may lost the comparison  between the maximum and the 
+neighbor outside the subproblem, which result in the incorrect result in some cases.
+\\
+To fix this instruction, we can compare the the maximum with the best point we have 
+ever seen after checking the neighbors around maximum. If the maximum is smaller than 
+the best point, do the recursion until the maximum is equal to the best point.
+\\
 %%% PROBLEM 5 SOLUTION END %%%
 \fi
 
