@@ -26,7 +26,7 @@ None.
 {\color{blue}2. 
 
 For each recursion, the level of details would changes from n to n-1.
-The level of details would becomes 0 at the buttom of the tree. So the 
+The level of details would becomes 0 at the buttom of the tree. Therefore, the 
 depth of the recursion tree for rendering a snowflake of LoD is n.}
 %%% PROBLEM 1(a) ANSWER END %%%
 }
@@ -36,7 +36,7 @@ depth of the recursion tree for rendering a snowflake of LoD is n.}
 {\color{blue}4.
 
 At $i=0$, there are only three nodes represented three edges. When $0 < i < n$, 
-the function SNOWFLAKE-EDGE generates 4 nodes in a round. So there are 
+the function SNOWFLAKE-EDGE generates 4 nodes in a round. Therefore, there are 
 $3 \cdot 4^i$ nodes.}
 %%% PROBLEM 1(b) ANSWER END %%%
 }
@@ -46,7 +46,7 @@ $3 \cdot 4^i$ nodes.}
 {\color{blue}2. 
 
 For each node, the function divided a side into 4 line segment, which can make a 
-triangle. So the rendering time for a node is $\Theta(1)$. }
+triangle. Therefore, the rendering time for a node is $\Theta(1)$. }
 %%% PROBLEM 1(c) ANSWER END %%%
 }
 
@@ -54,7 +54,7 @@ triangle. So the rendering time for a node is $\Theta(1)$. }
 %%% PROBLEM 1(d) ANSWER START %%%
 {\color{blue}4. 
 
-From Problem (b) we know that there are $3 \cdot 4^i$ nodes at level $i$. So the 
+From Problem (b) we know that there are $3 \cdot 4^i$ nodes at level $i$. Therefore, the 
 rendering time at level $i$ is $3 \cdot 4^i \times \Theta(1) = \Theta(4^i)$.}
 %%% PROBLEM 1(d) ANSWER END %%%
 }
@@ -72,7 +72,7 @@ summantion of the costs for all nodes. So $T(n)=\sum^{n-1}_{i=0} \Theta(4^i) = \
 {\color{blue}2. 
 
 Same as Problem (a). For each recursion, the level of details would changes from n to n-1.
-The level of details would becomes 0 at the buttom of the tree. So the 
+The level of details would becomes 0 at the buttom of the tree. Therefore, the 
 depth of the recursion tree for rendering a snowflake of LoD is n.}
 %%% PROBLEM 1(f) ANSWER END %%%
 }
@@ -81,7 +81,7 @@ depth of the recursion tree for rendering a snowflake of LoD is n.}
 {\color{blue}4.
 
 Same as Problem (b). At $i=0$, there are only three nodes represented three edges. When $0 < i < n$, 
-the function SNOWFLAKE-EDGE generates 4 nodes in a round. So there are 
+the function SNOWFLAKE-EDGE generates 4 nodes in a round. Therefore, there are 
 $3 \cdot 4^i$ nodes.}
 %%% PROBLEM 1(g) ANSWER END %%%
 }
@@ -128,42 +128,72 @@ The total cost is equivalent to  the cost at the last level
 }
 \newcommand{\answerIm}{ \answer
 %%% PROBLEM 1(m) ANSWER START %%%
-0
+{\color{blue}2. 
+
+Same as Problem (a). For each recursion, the level of details would changes from n to n-1.
+The level of details would becomes 0 at the buttom of the tree. Therefore, the 
+depth of the recursion tree for rendering a snowflake of LoD is n.}
 %%% PROBLEM 1(m) ANSWER END %%%
 }
 \newcommand{\answerIn}{ \answer
 %%% PROBLEM 1(n) ANSWER START %%%
-0
+{\color{blue}4.
+
+Same as Problem (b). At $i=0$, there are only three nodes represented three edges. When $0 < i < n$, 
+the function SNOWFLAKE-EDGE generates 4 nodes in a round. Therefore, there are 
+$3 \cdot 4^i$ nodes.}
 %%% PROBLEM 1(n) ANSWER END %%%
 }
 \newcommand{\answerIo}{ \answer
 %%% PROBLEM 1(o) ANSWER START %%%
-0
+{\color{blue}1.
+
+Same as Problem (h). Line segments are only rendered 
+at the buttom of the tree, so the cost of each node is 0 at 
+level $0 \le i < n$.}
 %%% PROBLEM 1(o) ANSWER END %%%
 }
 \newcommand{\answerIp}{ \answer
 %%% PROBLEM 1(p) ANSWER START %%%
-0
+{\color{blue}4.
+
+In the begining, we supose that the length of each side in the triangle 
+is 1. After we do SNOWFLAKE-EDGE for a side, the length of the side is 
+devided into 4 parts, and the the length of each fraction is $\frac{1}{3}$.
+At level i in $0 \le i < n$, the length of each fraction is $\frac{1}{3}^i$.
+Therefore, the cost for a node at the last level is $\Theta(\frac{1}{3}^n)$.}
 %%% PROBLEM 1(p) ANSWER END %%%
 }
 \newcommand{\answerIq}{ \answer
 %%% PROBLEM 1(q) ANSWER START %%%
-0
+{\color{blue}1.
+
+Based on the result from Problem (o). Line segments are only rendered 
+at the buttom of the tree, so the total cost is 0 at the 
+level i which $0 \le i < n$.}
 %%% PROBLEM 1(q) ANSWER END %%%
 }
 \newcommand{\answerIr}{ \answer
 %%% PROBLEM 1(r) ANSWER START %%%
-0
+{\color{blue}3.
+
+Based on the result from Problem (n) and (p). The cost at the last level is 
+$ 3 \cdot 4^n \times \Theta(\frac{1}{3}^n) = \Theta (\frac{4}{3}^n) $}
 %%% PROBLEM 1(r) ANSWER END %%%
 }
 \newcommand{\answerIs}{ \answer
 %%% PROBLEM 1(s) ANSWER START %%%
-0
+{\color{blue}3.
+
+The total cost is equivalent to the cost at the last level is 
+$ T(n) = 3 \cdot 4^n \times \Theta(\frac{1}{3}^n) = \Theta (\frac{4}{3}^n) $}
 %%% PROBLEM 1(s) ANSWER END %%%
 }
 \newcommand{\answerIt}{ \answer
 %%% PROBLEM 1(t) ANSWER START %%%
-0
+{\color{blue}1.
+
+The illustration is down below.}
 %%% PROBLEM 1(t) ANSWER END %%%
 }
 \newcommand{\answerIu}{ \answer
