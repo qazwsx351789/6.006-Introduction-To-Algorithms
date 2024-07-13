@@ -9,7 +9,7 @@
 \usepackage{url}
 \usepackage{graphicx}
 \usepackage{clrscode3e}
-
+\usepackage{color}
 \newcommand{\answer}{
  \par\medskip
  \textbf{Answer:}
@@ -23,30 +23,48 @@ None.
 
 \newcommand{\answerIa}{ \answer
 %%% PROBLEM 1(a) ANSWER START %%%
-0
+{\color{blue}2. 
+
+For each recursion, the level of details would changes from n to n-1.
+The level of details would becomes 0 at the buttom of the tree. So the 
+depth of the recursion tree for rendering a snowflake of LoD is n.}
 %%% PROBLEM 1(a) ANSWER END %%%
 }
 
 \newcommand{\answerIb}{ \answer
 %%% PROBLEM 1(b) ANSWER START %%%
-0
+{\color{blue}4.
+
+At $i=0$, there are only three nodes represented three edges. When $0 < i < n$, 
+the function SNOWFLAKE-EDGE generates 4 nodes in a round. So there are 
+$3 \cdot 4^i$ nodes.}
 %%% PROBLEM 1(b) ANSWER END %%%
 }
 
 \newcommand{\answerIc}{ \answer
 %%% PROBLEM 1(c) ANSWER START %%%
-0
+{\color{blue}2. 
+
+For each node, the function divided a side into 4 line segment, which can make a 
+triangle. So the rendering time for a node is $\Theta(1)$. }
 %%% PROBLEM 1(c) ANSWER END %%%
 }
 
 \newcommand{\answerId}{ \answer
 %%% PROBLEM 1(d) ANSWER START %%%
-0
+{\color{blue}4. 
+
+From Problem (b) we know that there are $3 \cdot 4^i$ nodes at level $i$. So the 
+rendering time at level $i$ is $3 \cdot 4^i \times \Theta(1) = \Theta(4^i)$.}
 %%% PROBLEM 1(d) ANSWER END %%%
 }
 \newcommand{\answerIe}{ \answer
 %%% PROBLEM 1(e) ANSWER START %%%
-0
+{\color{blue}4. 
+
+Suppose that the cost for the CPU is $T(n)$. The total cost is the 
+summantion of the costs for all nodes. So $T(n)=\sum^{n-1}_{i=0} \Theta(4^i) = \Theta(4)+\Theta(4^1)+...+\Theta(4^n)
+=\Theta(4^n)$.}
 %%% PROBLEM 1(e) ANSWER END %%%
 }
 \newcommand{\answerIf}{ \answer
