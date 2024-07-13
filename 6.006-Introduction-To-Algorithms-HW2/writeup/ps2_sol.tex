@@ -69,37 +69,61 @@ summantion of the costs for all nodes. So $T(n)=\sum^{n-1}_{i=0} \Theta(4^i) = \
 }
 \newcommand{\answerIf}{ \answer
 %%% PROBLEM 1(f) ANSWER START %%%
-0
+{\color{blue}2. 
+
+Same as Problem (a). For each recursion, the level of details would changes from n to n-1.
+The level of details would becomes 0 at the buttom of the tree. So the 
+depth of the recursion tree for rendering a snowflake of LoD is n.}
 %%% PROBLEM 1(f) ANSWER END %%%
 }
 \newcommand{\answerIg}{ \answer
 %%% PROBLEM 1(g) ANSWER START %%%
-0
+{\color{blue}4.
+
+Same as Problem (b). At $i=0$, there are only three nodes represented three edges. When $0 < i < n$, 
+the function SNOWFLAKE-EDGE generates 4 nodes in a round. So there are 
+$3 \cdot 4^i$ nodes.}
 %%% PROBLEM 1(g) ANSWER END %%%
 }
 \newcommand{\answerIh}{ \answer
 %%% PROBLEM 1(h) ANSWER START %%%
-0
+{\color{blue}1.
+
+Different to Problem (c). Line segments are only rendered 
+at the buttom of the tree, so the cost of each node is 0 at 
+level $0 \le i < n$.}
 %%% PROBLEM 1(h) ANSWER END %%%
 }
 \newcommand{\answerIi}{ \answer
 %%% PROBLEM 1(i) ANSWER START %%%
-0
+{\color{blue}2.
+
+At the last level, each node represents a line in the pattern,
+ so the cost is $\Theta(1)$ for each node in the last level.}
 %%% PROBLEM 1(i) ANSWER END %%%
 }
 \newcommand{\answerIj}{ \answer
 %%% PROBLEM 1(j) ANSWER START %%%
-0
+{\color{blue}1.
+
+Based on the results from Problem (h), the cost at each level
+ $i$ for $0 \le i < n$ is 0.}
 %%% PROBLEM 1(j) ANSWER END %%%
 }
 \newcommand{\answerIk}{ \answer
 %%% PROBLEM 1(k) ANSWER START %%%
-0
+{\color{blue}4.
+
+Based on the results from Problem (i), the cost at the last level
+ $n$ is $3 \cdot 4^n \times \Theta(1) = \Theta(4^n)$.}
 %%% PROBLEM 1(k) ANSWER END %%%
 }
 \newcommand{\answerIl}{ \answer
 %%% PROBLEM 1(l) ANSWER START %%%
-0
+{\color{blue}4.
+
+The total cost is equivalent to  the cost at the last level
+ $n$ : $T(n) = 3 \cdot 4^n \times \Theta(1) = \Theta(4^n)$.}
 %%% PROBLEM 1(l) ANSWER END %%%
 }
 \newcommand{\answerIm}{ \answer
