@@ -170,7 +170,7 @@ Therefore, the cost for a node at the last level is $\Theta(\frac{1}{3}^n)$.}
 
 Based on the result from Problem (o). Line segments are only rendered 
 at the buttom of the tree, so the total cost is 0 at the 
-level i which $0 \le i < n$.}
+level i such that $0 \le i < n$.}
 %%% PROBLEM 1(q) ANSWER END %%%
 }
 \newcommand{\answerIr}{ \answer
@@ -198,7 +198,18 @@ The illustration is down below.}
 }
 \newcommand{\answerIu}{ \answer
 %%% PROBLEM 1(u) ANSWER START %%%
-Your proof in latex.
+
+{\color{blue}According to Problem (b), we know that there are $3 \cdot 4^i $ nodes in level $i$
+such that $0 \le i < n$.  We assume that the area of a triangle with side length l is $\Theta(l^2)$.
+So, the cost for each node is $\Theta(\frac{1}{9}^i)$ at i level. The cost 
+at level i can be written as $3 \cdot 4^i \times \Theta(\frac{1}{9}^i) $.
+
+The total cost is the summantion of the cost in all levels: 
+\begin{equation}
+  T(n)=\sum^{n}_{i=0} 3 \cdot 4^i \times \Theta(\frac{1}{9}^i)\approx \Theta(1). 
+\end{equation}
+
+$T(n)$ is a geometric series, which would be asymptotic to a constant.}
 %%% PROBLEM 1(u) ANSWER END %%%
 }
 \newcommand{\answerIIa}{ \answer 
