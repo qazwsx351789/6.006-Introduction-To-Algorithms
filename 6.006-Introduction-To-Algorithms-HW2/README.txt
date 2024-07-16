@@ -8,9 +8,10 @@ a practice. This course is instrumental for me to self-learn algorithms.
 
 If you are curious about what I did, you can see ps2_sol.pdf directly. 
 
-I also improved the class PriorityQueue in circuit/circuit.py, using min-Heap to shorten time complexity from \Theta(n)
-to \Theta(1) time. My code is sandwiched by ################### my function ######################.
+I also improved the class PriorityQueue in circuit/circuit.py, using min-Heap to shorten time complexity from $\Theta(n)$
+to $\Theta(1)$ time. My code is sandwiched by ################### my function ######################.
 
+It is compatible with python3
 ##################################################################################################
 
 SOLUTION TEMPLATE INSTRUCTIONS
