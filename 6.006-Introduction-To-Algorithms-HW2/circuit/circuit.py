@@ -259,7 +259,7 @@ class Circuit:
     def as_json(self):
         """A hash that obeys the JSON format, representing the circuit."""
         json = {}
-        json['gates'] = [gate.as_json() for gate in self.gates.itervalues()]
+        json['gates'] = [gate.as_json() for gate in self.gates.values()]
         return json
 
 class Transition:
@@ -340,12 +340,66 @@ class Transition:
         Transition._next_id += 1
         return id
 
+# class PriorityQueue:
+#     """Array-based priority queue implementation."""
+#     def __init__(self):
+#         """Initially empty priority queue."""
+#         self.queue = []
+#         self.min_index = None
+    
+#     def __len__(self):
+#         # Number of elements in the queue.
+#         return len(self.queue)
+    
+#     def append(self, key):
+#         """Inserts an element in the priority queue."""
+#         if key is None:
+#             raise ValueError('Cannot insert None in the queue')
+#         self.queue.append(key)
+#         self.min_index = None
+    
+#     def min(self):
+#         """The smallest element in the queue."""
+#         if len(self.queue) == 0:
+#             return None
+#         self._find_min()
+#         return self.queue[self.min_index]
+    
+#     def pop(self):
+#         """Removes the minimum element in the queue.
+    
+#         Returns:
+#             The value of the removed element.
+#         """
+#         if len(self.queue) == 0:
+#             return None
+#         self._find_min()
+#         popped_key = self.queue.pop(self.min_index)
+#         self.min_index = None
+#         return popped_key
+    
+#     def _find_min(self):
+#         # Computes the index of the minimum element in the queue.
+#         #
+#         # This method may crash if called when the queue is empty.
+#         if self.min_index is not None:
+#             return
+#         min = self.queue[0]
+#         self.min_index = 0
+#         for i in xrange(1, len(self.queue)):
+#             key = self.queue[i]
+#             if key < min:
+#                 min = key
+#                 self.min_index = i
+                
+                
+###########################################  my function ###########################################
+
 class PriorityQueue:
-    """Array-based priority queue implementation."""
+    """Array-based priority queue implementation using a min-heap."""
     def __init__(self):
         """Initially empty priority queue."""
         self.queue = []
-        self.min_index = None
     
     def __len__(self):
         # Number of elements in the queue.
@@ -356,14 +410,13 @@ class PriorityQueue:
         if key is None:
             raise ValueError('Cannot insert None in the queue')
         self.queue.append(key)
-        self.min_index = None
+        self._up(len(self.queue) - 1)
     
     def min(self):
         """The smallest element in the queue."""
         if len(self.queue) == 0:
             return None
-        self._find_min()
-        return self.queue[self.min_index]
+        return self.queue[0]
     
     def pop(self):
         """Removes the minimum element in the queue.
@@ -373,24 +426,36 @@ class PriorityQueue:
         """
         if len(self.queue) == 0:
             return None
-        self._find_min()
-        popped_key = self.queue.pop(self.min_index)
-        self.min_index = None
+        self._swap(0, len(self.queue) - 1)
+        popped_key = self.queue.pop()
+        self._down(0)
         return popped_key
     
-    def _find_min(self):
-        # Computes the index of the minimum element in the queue.
-        #
-        # This method may crash if called when the queue is empty.
-        if self.min_index is not None:
-            return
-        min = self.queue[0]
-        self.min_index = 0
-        for i in xrange(1, len(self.queue)):
-            key = self.queue[i]
-            if key < min:
-                min = key
-                self.min_index = i
+    def _up(self, idx):
+        parent = (idx - 1) // 2
+        if idx > 0 and self.queue[idx] < self.queue[parent]:
+            self._swap(idx, parent)
+            self._up(parent)
+    
+    def _down(self, idx):
+        left = 2 * idx + 1
+        right = 2 * idx + 2
+        smallest = idx
+        
+        if left < len(self.queue) and self.queue[left] < self.queue[smallest]:
+            smallest = left
+        if right < len(self.queue) and self.queue[right] < self.queue[smallest]:
+            smallest = right
+        if smallest != idx:
+            self._swap(idx, smallest)
+            self._down(smallest)
+    
+    def _swap(self, i, j):
+        self.queue[i], self.queue[j] = self.queue[j], self.queue[i]
+
+###########################################  my function ###########################################
+
+
 
 class Simulation:
     """State needed to compute a circuit's state as it evolves over time."""
@@ -464,7 +529,7 @@ class Simulation:
             
     def probe_all_gates(self):
         """Turns on probing for all gates in the simulation."""
-        for gate in self.circuit.gates.itervalues():
+        for gate in self.circuit.gates.values():
             if not gate.probed:
                 self.probe_all_undo_log.append(gate)
                 gate.probe()
